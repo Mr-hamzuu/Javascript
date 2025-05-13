@@ -1,3 +1,4 @@
+// const { use } = require("react");
 
 console.log("hello world");
 console.log('hello world');
@@ -240,3 +241,21 @@ console.log(newday.toLocaleString('default',{
     day:"2-digit",
     year:"numeric"
 }))
+
+
+// falsy values :
+// false ,0,-0,Bigint 0n,"" ,null ,undefined ,NaN
+let user="hello";
+if(user){
+    console.log(`${user} world`)
+}
+else{
+    console.log("Dont have any value");
+    
+}
+
+// Nullish coalescing operator : it is used to prefer other values on null for best program execution 
+// let value=340 ?? 77;
+// let value=null ?? 77;
+let value=undefined ?? 77??66;
+console.log(value);
