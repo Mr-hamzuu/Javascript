@@ -169,3 +169,89 @@ let score3=4000
 console.log(Array.of(score1,score2,score3)) 
 // To convert to array we use 
 console.log(Array.from("Array")) 
+
+
+const array3=[34,4,56,67,87,32]
+// const array4=array3.filter((num)=>num>34)
+// or 
+const array4=array3.filter((num)=>{
+    return num>34;
+})
+
+console.log(array4);
+
+
+const array2=[
+    {
+        name:"Javascript",
+        shortform:"js"
+    },
+    {
+        name:"python",
+        shortform:"py"
+    },
+    {
+        name:"cpp",
+        shortform:"c++"
+    }
+]
+const array5=array2.filter((items)=>{
+    return items.name==="cpp";
+})
+console.log(array5)
+
+let marks=[0,1,2,3,4,5,6]
+let marks1=marks.map((num)=>num*20).map((num)=>num/5)
+console.log(marks);
+console.log(marks1);
+let total=marks.reduce((previous,current)=>{
+    console.log(`previous : ${previous} and current : ${current}`);
+    return previous+current;
+},5);//previous = 5
+console.log(total);
+
+
+const shop=[
+    {
+        shopping:"bag",
+        price:3000
+    },
+    {
+        shopping:"shirt",
+        price:2500
+    },
+    {
+        shopping:"pant",
+        price:2000
+    }
+]
+
+let cart=shop.reduce((pre,cur)=> {
+    return pre+cur.price;
+},0);
+console.log(`Total Bill is : ${cart}`);
+
+
+// practice
+const students = [
+  { name: "Ali", marks: 85 },
+  { name: "Sara", marks: 42 },
+  { name: "John", marks: 73 },
+  { name: "Hamza", marks: 38 },
+  { name: "Areeba", marks: 91 },
+];
+// task 1
+for (let index = 0; index < students.length; index++) {
+    const element = students[index];
+    console.log(element);
+}
+// task 2
+let count =0;
+let i =0;
+while (i<students.length) {
+    if (students[i].marks>=50) {
+        count++;
+    }
+    i++
+}
+console.log(count);
