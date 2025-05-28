@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>project3</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+       body{
+        height: 100%;
+
+       }
+       .obj{
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       }
+       #clock{
+        text-align: center;
+        background-color: aqua;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 34px;
+       }
+    </style>
+</head>
+<body>
+    <div class="obj">
+        <div id="clock"></div>
+    </div>
+</body>
+<script>
+    const clock=document.querySelector('#clock');
+    setInterval(() => {
+        let time=new Date();
+        time=time.toLocaleTimeString();
+        clock.innerHTML=time;
+    }, 1000);
+</script>
+</html>

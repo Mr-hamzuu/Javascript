@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom2</title>
+</head>
+
+<body>
+    <ul class="one">
+        <li>hamza</li>
+        <li>hadi</li>
+    </ul>
+</body>
+<script>
+    function addname(name) {
+        const li = document.createElement('li');
+        li.innerHTML = `${name}`;
+        document.querySelector('.one').appendChild(li);
+    }
+    addname("javascipt");
+    addname("javascipt");
+
+    // Optimize method
+    function Optimize(name) {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(name));
+        document.querySelector(".one").appendChild(li);
+
+    }
+    Optimize("python")
+    Optimize("python")
+
+    // Edit value
+    const li = document.querySelector("li:nth-child(3)");
+    // li[4].innerHTML="hello"; not optimize
+    const newelement = document.createElement('li');
+    newelement.textContent = "Django";
+    li.replaceWith(newelement);
+
+    // remove or delete element
+    const lastelement = document.querySelector("li:last-child");
+    lastelement.remove();
+</script>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project2</title>
+    <style>
+        input {
+            margin: 12px;
+        }
+
+        h1,
+        form {
+            justify-self: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 23px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="head">BMI Calculater</h1>
+    <form method="post">
+        <label for="height">height in m :</label>
+        <input type="text" id="height"><br>
+        <label for="weight">weight in kg :</label>
+        <input type="text" id="weight"><br>
+        <button type="submit" id="calculate">Calculate</button>
+    </form>
+    <div style="justify-self: center;"><span>Total :</span><span id="Total"></span> </div>
+</body>
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (n) {
+        n.preventDefault();
+
+        const height = parseInt(document.querySelector('#height').value);
+        const weight = parseInt(document.querySelector('#weight').value);
+        const Total = document.querySelector('#Total');
+let bmi;
+        if (height < 0 || height === '' || isNaN(height)) {
+            Total.innerHTML = `Please enter a valid height ${height}`;
+        }
+        else if (weight < 0 || weight === '' || isNaN(weight)) {
+            Total.innerHTML = `Please enter a valid weight ${weight}`;
+
+        }
+        else {
+            bmi = (weight / ((height * height) / 10000)).toFixed(2);
+            Total.innerHTML = `<span>${bmi}</span><br>`;
+            bmi = parseFloat(bmi);
+        }
+        if (bmi < 18.5) {
+            const text = document.createTextNode("underweight");
+            Total.appendChild(text);
+        }
+        else if (bmi >= 18.5 && bmi <= 29.5) {
+            const text = document.createTextNode("Normal weigt");
+            Total.appendChild(text);
+        }
+        else {
+            const text = document.createTextNode("Over weight");
+            Total.appendChild(text);
+        }
+
+    })
+</script>
+
+</html>
