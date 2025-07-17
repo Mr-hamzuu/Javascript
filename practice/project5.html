@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project5</title>
+</head>
+
+<body>
+    <div class="head">
+        <h2>Record</h2>
+    </div>
+    <form action="">
+        <label for="name">Enter item</label>
+        <input type="text" name="" id="input">
+        <button type="submit" id="add">Add</button>
+        <button type="reset">Reset</button>
+    </form>
+    <ul>
+
+    </ul>
+</body>
+    <script>
+        let input=document.querySelector('#input');
+        let add=document.querySelector('#add');
+        let del=document.querySelector('#delete');
+        let ul=document.querySelector('ul');
+
+        add.addEventListener('click',function(event){
+            event.preventDefault();
+            let item=document.createElement('li');
+            item.innerHTML=`${input.value} <button class='delete'>Delete</button>`;
+           ul.appendChild(item);
+           input.value='';
+        })
+        ul.addEventListener('click',function(e){
+            if (e.target.classList.contains('delete')) {
+                e.target.parentElement.remove();
+            }
+        });
+    </script>
+</html>
