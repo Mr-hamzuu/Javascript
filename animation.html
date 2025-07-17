@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pizza Shop</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .left, .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .right {
+      align-items: center;
+      background-color: #ffe5b4;
+      transform: translateX(100%);
+    }
+
+    .left.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .right.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #d62828;
+      margin-bottom: 20px;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .pizza-image {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .order-btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background-color: #d62828;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .order-btn:hover {
+      background-color: #a32020;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left, .right {
+        transform: translateY(100%);
+        align-items: center;
+        text-align: center;
+      }
+
+      .left.show, .right.show {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left" id="left">
+      <div class="logo">Pizza Palace</div>
+      <div class="tagline">Fresh. Hot. Delicious. Just the way you love it!</div>
+    </div>
+    <div class="right" id="right">
+      <img src="https://images.unsplash.com/photo-1601924570184-9a5f50b90d7b?auto=format&fit=crop&w=800&q=80" alt="Pizza" class="pizza-image"/>
+      <button class="order-btn">Order Now</button>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('left').classList.add('show');
+      document.getElementById('right').classList.add('show');
+    });
+  </script>
+
+</body>
+</html>

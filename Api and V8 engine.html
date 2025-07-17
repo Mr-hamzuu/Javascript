@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        * {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .avatar {
+            border-radius: 50%;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        .link {
+            margin-top: 15px;
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <form action="" method="get" id="form">
+        <label for="username">Enter User ID :</label>
+        <input type="text" name="username" id="input">
+        <button type="submit">search</button>
+    </form>
+
+    <div class="card" id="userCard">
+        <img class="avatar" src="" alt="Avatar" id="avatar">
+        <div class="name" id="username">Loading...</div>
+        <div class="info" id="followers">Followers: </div>
+        <div class="info" id="repos">Public Repos: </div>
+        <a class="link" href="#" id="profileLink" target="_blank">Visit Profile</a>
+    </div>
+
+</body>
+<script>
+    let form = document.querySelector("#form");
+    let userinput = document.querySelector("#input");
+    let avatar = document.querySelector("#avatar");
+    let id = document.querySelector("#id");
+    let username = document.querySelector("#username");
+    let followers = document.querySelector("#followers");
+    let repos = document.querySelector("#repos");
+    let btn = document.querySelector("#btn");
+    let data;
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const request = "https://api.github.com/users/Mr-hamzuu";
+        const api = new XMLHttpRequest();
+        api.open('GET', request);
+        console.log(api.readyState);
+
+        api.onreadystatechange = function () {
+            console.log(api.readyState);
+            if (api.readyState == 4) {
+                console.log("requested", api.readyState);
+                data = JSON.parse(this.responseText);
+                // console.log(data);
+                // console.log(data.followers);
+                // console.log(data.login);
+
+                let inputuser = userinput.value.trim();
+                if (inputuser == data.login) {
+                    username.textContent = data.login;
+                    avatar.src = data.avatar_url;
+                    followers.textContent = "Followers: " + data.followers;
+                    repos.textContent = "Public Repos: " + data.public_repos;
+                }
+
+            }
+        };
+        api.send();
+    })
+
+
+    console.log(api.readyState);
+
+</script>
+
+</html>
