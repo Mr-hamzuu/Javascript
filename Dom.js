@@ -60,4 +60,14 @@ const color = ["red", "blue", "pink", "green", "orange"];
 for (let i = 0; i < parent.children.length; i++) {
     parent.children[i].style.backgroundColor = color[i];
 }
-
+const add=document.createElement('div');
+add.innerHTML="fsociety";
+document.body.appendChild(add);
+console.log(add)
+  const l=document.querySelector("#link");
+    l.addEventListener('click',function(e){
+        console.log("link clicked....")
+        console.log(e.target)
+        e.preventDefault();
+        e.stopPropagation();
+    })
